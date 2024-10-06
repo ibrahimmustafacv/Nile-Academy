@@ -11,6 +11,9 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* ضمان أن الجسم يملأ ارتفاع الشاشة */
         }
 
         header {
@@ -54,6 +57,7 @@
             padding: 20px;
             max-width: 1200px;
             margin: auto;
+            flex: 1; /* ضمان أن القسم الرئيسي يشغل المساحة المتبقية */
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* تكرار الأعمدة بشكل تفاعلي */
             gap: 20px; /* المسافة بين القوالب */
@@ -88,8 +92,6 @@
             padding: 5px 0; /* تقليل المساحة بين النص والأزرار */
             background: #003366; /* اللون الأزرق */
             color: white;
-            position: relative;
-            bottom: 0;
             width: 100%;
             font-size: 12px; /* تقليل حجم الخط */
         }
@@ -234,15 +236,26 @@
             </div>
         </div>
 
+        <div class="section" id="courses">
+            <h2>الكورسات</h2>
+            <div class="content">
+                <ul>
+                    <li>مقدمة في البرمجة</li>
+                    <li>إدارة الأعمال</li>
+                    <li>أساسيات التصميم الجرافيكي</li>
+                </ul>
+            </div>
+        </div>
+
         <div class="section" id="doctors">
             <h2>الدكاتره</h2>
             <div class="content">
                 <div class="doctor">
-                    <h4>د. أحمد علي</h4>
+                    <h3>دكتور أحمد</h3>
                     <p>أستاذ نظم المعلومات.</p>
                 </div>
                 <div class="doctor">
-                    <h4>د. ليلى مصطفى</h4>
+                    <h3>دكتورة ليلى</h3>
                     <p>أستاذة المحاسبة.</p>
                 </div>
             </div>
