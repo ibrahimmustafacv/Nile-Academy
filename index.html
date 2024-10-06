@@ -29,11 +29,10 @@
         nav ul {
             list-style: none;
             padding: 0;
-            display: flex; /* لجعل العناصر تظهر في صف */
-            justify-content: center; /* لمركز العناصر في منتصف الصفحة */
         }
 
         nav ul li {
+            display: inline;
             margin: 0 15px;
         }
 
@@ -48,26 +47,6 @@
 
         nav ul li a:hover {
             background: #00509E;
-        }
-
-        .slider {
-            display: flex;
-            overflow: hidden; /* لإخفاء ما وراء عرض الشريط */
-            width: 100%;
-            position: relative; /* لجعل الصور متداخلة */
-            margin-bottom: 20px; /* لإضافة مسافة بين الشريط والقائمة */
-        }
-
-        .slider img {
-            width: 100%; /* اجعل عرض الصورة يتكيف مع عرض الشريط */
-            height: auto; /* اجعل ارتفاع الصورة تلقائي */
-            border-radius: 10px; /* زوايا دائرية للصور */
-            position: absolute; /* لجعلها تتداخل */
-            transition: opacity 1s ease; /* انتقال سلس */
-        }
-
-        .slider img.hide {
-            opacity: 0; /* إخفاء الصورة */
         }
 
         main {
@@ -142,6 +121,33 @@
         .btn:hover {
             background: #00509E;
         }
+
+        /* شريط التمرير */
+        .slider-container {
+            margin: 20px 0; /* إضافة مسافة علوية وسفلية للإطار */
+            overflow: hidden; /* لإخفاء ما وراء عرض الشريط */
+            border-radius: 15px; /* زوايا دائرية للإطار */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* ظل للإطار */
+        }
+
+        .slider {
+            display: flex;
+            width: 100%;
+            height: 400px; /* زيادة ارتفاع الشريط */
+            position: relative; /* لجعل الصور متداخلة */
+        }
+
+        .slider img {
+            height: 100%; /* اجعل الصور تملأ الشريط */
+            width: auto; /* اجعل عرض الصور تلقائي */
+            border-radius: 10px; /* زوايا دائرية للصور */
+            position: absolute; /* لجعلها تتداخل */
+            transition: opacity 1s ease; /* انتقال سلس */
+        }
+
+        .slider img.hide {
+            opacity: 0; /* إخفاء الصورة */
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -181,32 +187,22 @@
     <header>
         <div class="logo">🎓 جامعة المستقبل</div> <!-- مكان الشعار -->
         <h1>معلومات عن الجامعة</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">عن الجامعة</a></li>
+                <li><a href="#programs">البرامج الأكاديمية</a></li>
+                <li><a href="#admissions">القبول والتسجيل</a></li>
+                <li><a href="#news">الأخبار</a></li>
+                <li><a href="#services">الخدمات الطلابية</a></li>
+                <li><a href="#contact">معلومات الاتصال</a></li>
+                <li><a href="#fees">المصروفات</a></li>
+                <li><a href="#courses">الكورسات</a></li>
+                <li><a href="#doctors">الدكاتره</a></li>
+                <li><a href="#schedules">مواعيد المحاضرات</a></li>
+                <li><a href="#results">عرض نتيجة الطالب</a></li>
+            </ul>
+        </nav>
     </header>
-
-    <div class="slider">
-        <img src="tape1.jpg" alt="صورة 1">
-        <img src="tape2.jpg" alt="صورة 2" class="hide">
-        <img src="tape3.jpg" alt="صورة 3" class="hide">
-        <img src="tape4.jpg" alt="صورة 4" class="hide">
-        <img src="tape5.jpg" alt="صورة 5" class="hide">
-        <img src="tape6.jpg" alt="صورة 6" class="hide">
-    </div>
-
-    <nav>
-        <ul>
-            <li><a href="#about">عن الجامعة</a></li>
-            <li><a href="#programs">البرامج الأكاديمية</a></li>
-            <li><a href="#admissions">القبول والتسجيل</a></li>
-            <li><a href="#news">الأخبار</a></li>
-            <li><a href="#services">الخدمات الطلابية</a></li>
-            <li><a href="#contact">معلومات الاتصال</a></li>
-            <li><a href="#fees">المصروفات</a></li>
-            <li><a href="#courses">الكورسات</a></li>
-            <li><a href="#doctors">الدكاتره</a></li>
-            <li><a href="#schedules">مواعيد المحاضرات</a></li>
-            <li><a href="#results">عرض نتيجة الطالب</a></li>
-        </ul>
-    </nav>
 
     <main>
         <div class="section" id="about">
@@ -215,6 +211,18 @@
                 <p>تأسست الجامعة في 2/08/2012.</p>
                 <h3>شعار الجامعة</h3>
                 <img src="icon.png" alt="شعار الجامعة" style="height: 100px;"> <!-- شعار الجامعة -->
+            </div>
+        </div>
+
+        <div class="slider-container">
+            <h2>شريط تمرير الصور</h2>
+            <div class="slider">
+                <img src="tape1.jpg" alt="صورة 1">
+                <img src="tape2.jpg" alt="صورة 2" class="hide">
+                <img src="tape3.jpg" alt="صورة 3" class="hide">
+                <img src="tape4.jpg" alt="صورة 4" class="hide">
+                <img src="tape5.jpg" alt="صورة 5" class="hide">
+                <img src="tape6.jpg" alt="صورة 6" class="hide">
             </div>
         </div>
 
@@ -230,9 +238,8 @@
             <div class="content">
                 <h3>الكليات المتاحة:</h3>
                 <ul>
-                    <li><strong>نظم المعلومات:</strong> برنامج يركز على تكنولوجيا المعلومات وإدارة البيانات.</li>
-                    <li><strong>محاسبة:</strong> برنامج يركز على المبادئ المحاسبية والتقارير المالية.</li>
-                    <li><strong>هندسة:</strong> برنامج يركز على تطبيقات الهندسة والتقنية.</li>
+                    <li><strong>نظم المعلومات:</strong> توفر تخصصات متعددة.</li>
+                    <li><strong>إدارة الأعمال:</strong> برنامج متميز.</li>
                 </ul>
             </div>
         </div>
@@ -240,61 +247,37 @@
         <div class="section" id="admissions">
             <h2>القبول والتسجيل</h2>
             <div class="content">
-                <p>للالتحاق بالجامعة، يجب عليك تقديم المستندات التالية:</p>
-                <ul>
-                    <li>صورة من شهادة الثانوية العامة.</li>
-                    <li>صورة شخصية.</li>
-                    <li>استمارة التسجيل.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section" id="contact">
-            <h2>معلومات الاتصال</h2>
-            <div class="content">
-                <p>للاستفسارات، يمكنك التواصل معنا عبر:</p>
-                <ul>
-                    <li>الهاتف: 123456789</li>
-                    <li>البريد الإلكتروني: info@university.com</li>
-                </ul>
+                <p>تبدأ فترة التسجيل في 15 يونيو وتستمر حتى 30 أغسطس.</p>
             </div>
         </div>
 
         <div class="section" id="fees">
-            <h2>المصروفات</h2>
+            <h2>المصروفات الدراسية</h2>
             <div class="content">
-                <p>تختلف المصروفات حسب البرنامج الدراسي.</p>
                 <div class="fee-section">
-                    <strong>برنامج نظم المعلومات:</strong> 5000 جنيه مصري سنويًا.
-                </div>
-                <div class="fee-section">
-                    <strong>برنامج المحاسبة:</strong> 6000 جنيه مصري سنويًا.
-                </div>
-                <div class="fee-section">
-                    <strong>برنامج الهندسة:</strong> 7000 جنيه مصري سنويًا.
+                    <h4>المصروفات السنوية:</h4>
+                    <p>5,000 جنيهاً مصرياً لكافة الكليات.</p>
                 </div>
             </div>
         </div>
 
         <div class="section" id="courses">
-            <h2>الكورسات</h2>
+            <h2>الكورسات المتاحة</h2>
             <div class="content">
-                <p>نقدم مجموعة متنوعة من الكورسات في مختلف التخصصات.</p>
+                <p>تقدم الجامعة كورسات متنوعة في جميع التخصصات.</p>
             </div>
         </div>
 
         <div class="section" id="doctors">
             <h2>الدكاتره</h2>
             <div class="content">
-                <p>يمكنك الاطلاع على قائمة الدكاترة المتخصصين لدينا:</p>
                 <div class="doctor">
-                    <strong>د. أحمد محمد:</strong> أستاذ في نظم المعلومات.
+                    <h4>د. محمد علي</h4>
+                    <p>أستاذ نظم المعلومات.</p>
                 </div>
                 <div class="doctor">
-                    <strong>د. سارة علي:</strong> أستاذة في المحاسبة.
-                </div>
-                <div class="doctor">
-                    <strong>د. يوسف حسن:</strong> أستاذ في الهندسة.
+                    <h4>د. سمية حسن</h4>
+                    <p>أستاذ إدارة الأعمال.</p>
                 </div>
             </div>
         </div>
@@ -302,22 +285,24 @@
         <div class="section" id="schedules">
             <h2>مواعيد المحاضرات</h2>
             <div class="content">
-                <p>يمكنك الاطلاع على مواعيد المحاضرات على الموقع الإلكتروني الخاص بنا.</p>
+                <p>تبدأ المحاضرات من الساعة 8:00 صباحاً وحتى 2:00 مساءً.</p>
             </div>
         </div>
 
         <div class="section" id="results">
             <h2>عرض نتيجة الطالب</h2>
-            <form id="result-form">
-                <input type="text" id="student-id" class="form-control" placeholder="رقم الطالب" required>
-                <input type="password" id="password" class="form-control" placeholder="كلمة المرور" required>
-                <button type="submit" class="btn">عرض النتيجة</button>
-            </form>
+            <div class="content">
+                <form id="result-form">
+                    <input type="text" id="student-id" class="form-control" placeholder="رقم الطالب" required>
+                    <input type="password" id="password" class="form-control" placeholder="كلمة المرور" required>
+                    <button type="submit" class="btn">عرض النتيجة</button>
+                </form>
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>حقوق الطبع والنشر &copy; 2024 جامعة المستقبل. جميع الحقوق محفوظة.</p>
+        <p>&copy; 2024 جامعة المستقبل. جميع الحقوق محفوظة.</p>
     </footer>
 </body>
 </html>
