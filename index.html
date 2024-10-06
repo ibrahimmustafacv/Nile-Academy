@@ -121,6 +121,18 @@
         .btn:hover {
             background: #00509E;
         }
+
+        /* شريط التمرير */
+        .slider {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+        }
+
+        .slider img {
+            height: 200px; /* ارتفاع الصور في الشريط */
+            border-radius: 10px; /* زوايا دائرية للصور */
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -153,7 +165,7 @@
                 <li><a href="#about">عن الجامعة</a></li>
                 <li><a href="#programs">البرامج الأكاديمية</a></li>
                 <li><a href="#admissions">القبول والتسجيل</a></li>
-                <li><a href="#news">الأخبار والفعاليات</a></li>
+                <li><a href="#news">الأخبار</a></li>
                 <li><a href="#services">الخدمات الطلابية</a></li>
                 <li><a href="#contact">معلومات الاتصال</a></li>
                 <li><a href="#fees">المصروفات</a></li>
@@ -170,17 +182,49 @@
             <h2>عن الجامعة</h2>
             <div class="content">
                 <p>تأسست الجامعة في 2/08/2012.</p>
+                <h3>شعار الجامعة</h3>
+                <img src="icon.png" alt="شعار الجامعة" style="height: 100px;"> <!-- شعار الجامعة -->
+            </div>
+        </div>
+
+        <div class="section" id="slider">
+            <h2>شريط تمرير الصور</h2>
+            <div class="slider">
+                <img src="tape1.jpg" alt="صورة 1">
+                <img src="tape2.jpg" alt="صورة 2">
+                <img src="tape3.jpg" alt="صورة 3">
+                <img src="tape4.jpg" alt="صورة 4">
+                <img src="tape5.jpg" alt="صورة 5">
+                <img src="tape6.jpg" alt="صورة 6">
+            </div>
+        </div>
+
+        <div class="section" id="news">
+            <h2>الأخبار العاجلة</h2>
+            <div class="content">
+                <p>خبر: الأحد إجازة رسمية بمناسبة الاحتفال بانتصار 6 أكتوبر. كل عام ومصر بخير وأمان.</p>
             </div>
         </div>
 
         <div class="section" id="programs">
             <h2>البرامج الأكاديمية</h2>
             <div class="content">
+                <h3>الكليات المتاحة:</h3>
                 <ul>
-                    <li>نظم المعلومات</li>
-                    <li>محاسبة</li>
-                    <li>هندسة</li>
+                    <li><strong>نظم المعلومات:</strong> برنامج يركز على تكنولوجيا المعلومات وإدارة البيانات.</li>
+                    <li><strong>محاسبة:</strong> برنامج يركز على المبادئ المحاسبية والتقارير المالية.</li>
+                    <li><strong>هندسة:</strong> برنامج يركز على تطبيقات الهندسة والتقنية.</li>
                 </ul>
+                <h3>برامج دراسات عليا:</h3>
+                <p>الشهادة الحاصلة هي البكالريوس.</p>
+            </div>
+        </div>
+
+        <div class="section" id="campus">
+            <h2>معلومات عن الحرم الجامعي</h2>
+            <div class="content">
+                <h3>الخرائط والمرافق:</h3>
+                <img src="map.jpg" alt="خريطة الحرم الجامعي" style="width: 100%; border-radius: 10px;">
             </div>
         </div>
 
@@ -196,93 +240,91 @@
                     <li>6 صور شخصية للطلاب الذكور</li>
                     <li>نموذج 2 جند و18 جند</li>
                 </ul>
+                <h3>مواعيد هامة:</h3>
+                <p>مواعيد تقديم الطلبات والمقابلات: مواعيد العمل من السبت إلى الخميس ابتداءً من الغد إن شاء الله.</p>
             </div>
         </div>
 
-        <div class="section" id="news">
-            <h2>الأخبار والفعاليات</h2>
+        <div class="section" id="student-activities">
+            <h2>أنشطة الطلاب</h2>
             <div class="content">
-                <p>اهتمام جريدة الجمهورية وجريدة أخبار اليوم وكذلك الصحف الإلكترونية بخبر تكريم وزير التعليم العالي لـ معهد النيل العالي للهندسة والتكنولوجيا بالمنصورة لحصول المعهد على الاعتماد من مؤسسة ABET الأمريكية.</p>
-            </div>
-        </div>
-
-        <div class="section" id="services">
-            <h2>الخدمات الطلابية</h2>
-            <div class="content">
-                <p>مكتبة، دعم أكاديمي، وغير ذلك.</p>
+                <h3>النوادي والجمعيات:</h3>
+                <ul>
+                    <li>نادي الأدب</li>
+                    <li>نادي العلوم</li>
+                    <li>جمعية الترفيه الطلابي</li>
+                    <li>نادي الرياضة</li>
+                </ul>
+                <h3>الفعاليات القادمة:</h3>
+                <p>فعاليات متنوعة سيتم الإعلان عنها قريباً.</p>
             </div>
         </div>
 
         <div class="section" id="contact">
-            <h2>معلومات الاتصال</h2>
+            <h2>الاتصال والتواصل</h2>
             <div class="content">
-                <p>الهاتف: 015 57569329</p>
+                <h3>نموذج الاتصال:</h3>
+                <form id="contact-form">
+                    <input type="text" class="form-control" placeholder="اسمك" required>
+                    <input type="email" class="form-control" placeholder="البريد الإلكتروني" required>
+                    <textarea class="form-control" placeholder="رسالتك" rows="4" required></textarea>
+                    <button type="submit" class="btn">إرسال</button>
+                </form>
+                <h3>روابط السوشيال ميديا:</h3>
+                <a href="https://www.facebook.com/nilegud55" target="_blank">فيسبوك</a>
             </div>
         </div>
 
         <div class="section" id="fees">
             <h2>المصروفات</h2>
-            <div class="content">
-                <p>تتضمن المصروفات الخاصة بكل قسم:</p>
-                <div class="fee-section">
-                    <h3>نظم المعلومات</h3>
-                    <p>المصروفات: 1000 جنيه (4 فرق)</p>
-                </div>
-                <div class="fee-section">
-                    <h3>محاسبة</h3>
-                    <p>المصروفات: 1200 جنيه (4 فرق)</p>
-                </div>
-                <div class="fee-section">
-                    <h3>هندسة</h3>
-                    <p>المصروفات: 1500 جنيه (6 فرق)</p>
-                </div>
+            <div class="fee-section">
+                <h3>تفاصيل المصروفات:</h3>
+                <p>يرجى مراجعة قسم المصروفات للبرامج الأكاديمية المختلفة.</p>
             </div>
         </div>
 
         <div class="section" id="courses">
             <h2>الكورسات</h2>
             <div class="content">
-                <ul>
-                    <li>ICDL</li>
-                    <li>إنجليزي</li>
-                    <li>CS50</li>
-                </ul>
+                <p>تفاصيل حول الكورسات المتاحة ستضاف قريبًا.</p>
             </div>
         </div>
 
         <div class="section" id="doctors">
             <h2>الدكاتره</h2>
-            <div class="content">
-                <div class="doctor">
-                    <h4>الدكتور محمد علي</h4>
-                    <p>تخصص: نظم معلومات</p>
-                </div>
-                <div class="doctor">
-                    <h4>الدكتور أحمد محمود</h4>
-                    <p>تخصص: محاسبة</p>
-                </div>
+            <div class="doctor">
+                <h3>دكتور أحمد</h3>
+                <p>تخصص: نظم المعلومات</p>
+                <p>مواعيد العمل: من الأحد إلى الخميس من 10 صباحًا إلى 3 مساءً.</p>
+            </div>
+            <div class="doctor">
+                <h3>دكتورة سارة</h3>
+                <p>تخصص: محاسبة</p>
+                <p>مواعيد العمل: من الأحد إلى الخميس من 1 مساءً إلى 4 مساءً.</p>
             </div>
         </div>
 
         <div class="section" id="schedules">
             <h2>مواعيد المحاضرات</h2>
             <div class="content">
-                <p>المحاضرات تبدأ من الساعة 8:00 صباحًا وحتى 5:00 مساءً.</p>
+                <p>سيتم الإعلان عن مواعيد المحاضرات قريبًا.</p>
             </div>
         </div>
 
         <div class="section" id="results">
             <h2>عرض نتيجة الطالب</h2>
-            <form id="result-form">
-                <input type="text" id="student-id" class="form-control" placeholder="رقم الطالب" required>
-                <input type="password" id="password" class="form-control" placeholder="كلمة المرور" required>
-                <button type="submit" class="btn">عرض النتيجة</button>
-            </form>
+            <div class="content">
+                <form id="result-form">
+                    <input type="text" id="student-id" class="form-control" placeholder="رقم الطالب" required>
+                    <input type="password" id="password" class="form-control" placeholder="كلمة المرور" required>
+                    <button type="submit" class="btn">عرض النتيجة</button>
+                </form>
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 جامعة المستقبل. جميع الحقوق محفوظة.</p>
+        <p>© 2024 جامعة المستقبل. جميع الحقوق محفوظة.</p>
     </footer>
 </body>
 </html>
