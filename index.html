@@ -33,16 +33,17 @@
 
         nav ul li {
             display: inline;
-            margin: 0 15px;
+            margin: 0 10px; /* تعديل المسافة بين العناصر */
         }
 
         nav ul li a {
             color: white;
             text-decoration: none;
             font-weight: bold;
-            padding: 5px 10px;
+            padding: 5px 8px; /* تقليل حجم الأزرار */
             border-radius: 5px;
             transition: background 0.3s;
+            font-size: 14px; /* جعل الخط أصغر */
         }
 
         nav ul li a:hover {
@@ -121,33 +122,6 @@
         .btn:hover {
             background: #00509E;
         }
-
-        /* شريط التمرير */
-        .slider-container {
-            margin: 20px 0; /* إضافة مسافة علوية وسفلية للإطار */
-            overflow: hidden; /* لإخفاء ما وراء عرض الشريط */
-            border-radius: 15px; /* زوايا دائرية للإطار */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* ظل للإطار */
-        }
-
-        .slider {
-            display: flex;
-            width: 100%;
-            height: 400px; /* زيادة ارتفاع الشريط */
-            position: relative; /* لجعل الصور متداخلة */
-        }
-
-        .slider img {
-            height: 100%; /* اجعل الصور تملأ الشريط */
-            width: auto; /* اجعل عرض الصور تلقائي */
-            border-radius: 10px; /* زوايا دائرية للصور */
-            position: absolute; /* لجعلها تتداخل */
-            transition: opacity 1s ease; /* انتقال سلس */
-        }
-
-        .slider img.hide {
-            opacity: 0; /* إخفاء الصورة */
-        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -168,18 +142,6 @@
                 // هنا يمكنك إضافة الكود الخاص بالتحقق من النتيجة.
                 alert("عرض نتيجة الطالب: " + studentId);
             });
-
-            // شريط التمرير التلقائي
-            const images = document.querySelectorAll('.slider img');
-            let currentIndex = 0;
-
-            function showNextImage() {
-                images[currentIndex].classList.add('hide');
-                currentIndex = (currentIndex + 1) % images.length;
-                images[currentIndex].classList.remove('hide');
-            }
-
-            setInterval(showNextImage, 3000); // تغيير الصورة كل 3 ثواني
         });
     </script>
 </head>
@@ -214,18 +176,6 @@
             </div>
         </div>
 
-        <div class="slider-container">
-            <h2>شريط تمرير الصور</h2>
-            <div class="slider">
-                <img src="tape1.jpg" alt="صورة 1">
-                <img src="tape2.jpg" alt="صورة 2" class="hide">
-                <img src="tape3.jpg" alt="صورة 3" class="hide">
-                <img src="tape4.jpg" alt="صورة 4" class="hide">
-                <img src="tape5.jpg" alt="صورة 5" class="hide">
-                <img src="tape6.jpg" alt="صورة 6" class="hide">
-            </div>
-        </div>
-
         <div class="section" id="news">
             <h2>الأخبار العاجلة</h2>
             <div class="content">
@@ -238,8 +188,9 @@
             <div class="content">
                 <h3>الكليات المتاحة:</h3>
                 <ul>
-                    <li><strong>نظم المعلومات:</strong> توفر تخصصات متعددة.</li>
-                    <li><strong>إدارة الأعمال:</strong> برنامج متميز.</li>
+                    <li><strong>نظم المعلومات:</strong> برنامج يركز على تكنولوجيا المعلومات وإدارة البيانات.</li>
+                    <li><strong>محاسبة:</strong> برنامج يركز على المبادئ المحاسبية والتقارير المالية.</li>
+                    <li><strong>هندسة:</strong> برنامج يركز على تطبيقات الهندسة والتقنية.</li>
                 </ul>
             </div>
         </div>
@@ -247,24 +198,24 @@
         <div class="section" id="admissions">
             <h2>القبول والتسجيل</h2>
             <div class="content">
-                <p>تبدأ فترة التسجيل في 15 يونيو وتستمر حتى 30 أغسطس.</p>
+                <p>يمكن للطلاب الجدد التسجيل في الجامعة خلال فترة القبول، من خلال الموقع الإلكتروني.</p>
+            </div>
+        </div>
+
+        <div class="section" id="contact">
+            <h2>معلومات الاتصال</h2>
+            <div class="content">
+                <p>تواصل معنا عبر البريد الإلكتروني: <a href="mailto:info@university.com">info@university.com</a></p>
             </div>
         </div>
 
         <div class="section" id="fees">
-            <h2>المصروفات الدراسية</h2>
+            <h2>المصروفات</h2>
             <div class="content">
                 <div class="fee-section">
-                    <h4>المصروفات السنوية:</h4>
-                    <p>5,000 جنيهاً مصرياً لكافة الكليات.</p>
+                    <h3>رسوم الدراسة:</h3>
+                    <p>رسوم الدراسة للطلاب الجدد: 10000 جنيه مصري سنوياً.</p>
                 </div>
-            </div>
-        </div>
-
-        <div class="section" id="courses">
-            <h2>الكورسات المتاحة</h2>
-            <div class="content">
-                <p>تقدم الجامعة كورسات متنوعة في جميع التخصصات.</p>
             </div>
         </div>
 
@@ -272,12 +223,12 @@
             <h2>الدكاتره</h2>
             <div class="content">
                 <div class="doctor">
-                    <h4>د. محمد علي</h4>
+                    <h4>د. أحمد علي</h4>
                     <p>أستاذ نظم المعلومات.</p>
                 </div>
                 <div class="doctor">
-                    <h4>د. سمية حسن</h4>
-                    <p>أستاذ إدارة الأعمال.</p>
+                    <h4>د. ليلى مصطفى</h4>
+                    <p>أستاذة المحاسبة.</p>
                 </div>
             </div>
         </div>
@@ -285,24 +236,22 @@
         <div class="section" id="schedules">
             <h2>مواعيد المحاضرات</h2>
             <div class="content">
-                <p>تبدأ المحاضرات من الساعة 8:00 صباحاً وحتى 2:00 مساءً.</p>
+                <p>مواعيد المحاضرات متاحة على الموقع في قسم الجداول الدراسية.</p>
             </div>
         </div>
 
         <div class="section" id="results">
             <h2>عرض نتيجة الطالب</h2>
-            <div class="content">
-                <form id="result-form">
-                    <input type="text" id="student-id" class="form-control" placeholder="رقم الطالب" required>
-                    <input type="password" id="password" class="form-control" placeholder="كلمة المرور" required>
-                    <button type="submit" class="btn">عرض النتيجة</button>
-                </form>
-            </div>
+            <form id="result-form">
+                <input type="text" id="student-id" class="form-control" placeholder="رقم الطالب" required>
+                <input type="password" id="password" class="form-control" placeholder="كلمة المرور" required>
+                <button type="submit" class="btn">عرض النتيجة</button>
+            </form>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2024 جامعة المستقبل. جميع الحقوق محفوظة.</p>
+        <p>حقوق النشر © 2024 جامعة المستقبل. جميع الحقوق محفوظة.</p>
     </footer>
 </body>
 </html>
