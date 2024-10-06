@@ -3,112 +3,299 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>موقع إبراهيم مصطفى</title>
+    <title>الموقع الجامعي</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            direction: rtl;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
 
         header {
-            background-color: #35424a;
-            color: #ffffff;
-            padding: 20px 0;
+            background: #003366; /* اللون الأزرق */
+            color: #fff;
+            padding: 20px;
             text-align: center;
+            position: relative;
         }
 
-        nav {
-            background-color: #35424a;
-            color: #ffffff;
+        header .logo {
+            font-size: 36px;
+            margin-bottom: 10px;
         }
 
         nav ul {
-            list-style-type: none;
+            list-style: none;
             padding: 0;
         }
 
         nav ul li {
             display: inline;
-            margin-right: 15px;
+            margin: 0 15px;
         }
 
         nav ul li a {
-            color: #ffffff;
+            color: white;
             text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #00509E;
         }
 
         main {
             padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* تكرار الأعمدة بشكل تفاعلي */
+            gap: 20px; /* المسافة بين القوالب */
         }
 
-        section {
-            margin-bottom: 20px;
+        .section {
+            background: white;
+            border-radius: 15px; /* زوايا دائرية */
             padding: 20px;
-            background-color: #ffffff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer; /* تجعل القالب قابل للنقر */
+            overflow: hidden; /* لإخفاء أي محتوى زائد */
+        }
+
+        .section:hover {
+            transform: scale(1.05); /* تأثير تفاعلي عند التمرير */
+        }
+
+        .section h2 {
+            cursor: pointer; /* يجعل العنوان قابل للنقر */
+            margin: 0;
+        }
+
+        .content {
+            display: none; /* إخفاء المحتوى بشكل افتراضي */
+            padding: 10px;
         }
 
         footer {
-            background-color: #35424a;
-            color: #ffffff;
             text-align: center;
-            padding: 10px 0;
+            padding: 15px 0;
+            background: #003366; /* اللون الأزرق */
+            color: white;
             position: relative;
             bottom: 0;
             width: 100%;
         }
 
-        .button {
-            background-color: #e8491d;
-            color: #ffffff;
-            padding: 10px 20px;
-            text-decoration: none;
+        .fee-section, .doctor {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+
+        .form-control {
+            margin: 10px 0;
+            padding: 10px;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
             border-radius: 5px;
         }
 
-        .button:hover {
-            background-color: #d73715;
+        .btn {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #00509E;
+        }
+
+        /* شريط التمرير */
+        .slider {
+            display: flex;
+            overflow: hidden; /* لإخفاء ما وراء عرض الشريط */
+            width: 100%;
+            height: 400px; /* زيادة ارتفاع الشريط */
+            position: relative; /* لجعل الصور متداخلة */
+        }
+
+        .slider img {
+            height: 100%; /* اجعل الصور تملأ الشريط */
+            width: auto; /* اجعل عرض الصور تلقائي */
+            border-radius: 10px; /* زوايا دائرية للصور */
+            position: absolute; /* لجعلها تتداخل */
+            transition: opacity 1s ease; /* انتقال سلس */
+        }
+
+        .slider img.hide {
+            opacity: 0; /* إخفاء الصورة */
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // إضافة حدث للنقر على عناوين الأقسام
+            const headers = document.querySelectorAll(".section h2");
+            headers.forEach(header => {
+                header.addEventListener("click", function() {
+                    const content = this.nextElementSibling;
+                    content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
+                });
+            });
+
+            document.getElementById("result-form").addEventListener("submit", function(e) {
+                e.preventDefault();
+                const studentId = document.getElementById("student-id").value;
+                const password = document.getElementById("password").value;
+
+                // هنا يمكنك إضافة الكود الخاص بالتحقق من النتيجة.
+                alert("عرض نتيجة الطالب: " + studentId);
+            });
+
+            // شريط التمرير التلقائي
+            const images = document.querySelectorAll('.slider img');
+            let currentIndex = 0;
+
+            function showNextImage() {
+                images[currentIndex].classList.add('hide');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.remove('hide');
+            }
+
+            setInterval(showNextImage, 3000); // تغيير الصورة كل 3 ثواني
+        });
+    </script>
 </head>
 <body>
     <header>
-        <h1>مرحبًا بكم في موقعي</h1>
+        <div class="logo">🎓 جامعة المستقبل</div> <!-- مكان الشعار -->
+        <h1>معلومات عن الجامعة</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">عن الجامعة</a></li>
+                <li><a href="#programs">البرامج الأكاديمية</a></li>
+                <li><a href="#admissions">القبول والتسجيل</a></li>
+                <li><a href="#news">الأخبار</a></li>
+                <li><a href="#services">الخدمات الطلابية</a></li>
+                <li><a href="#contact">معلومات الاتصال</a></li>
+                <li><a href="#fees">المصروفات</a></li>
+                <li><a href="#courses">الكورسات</a></li>
+                <li><a href="#doctors">الدكاتره</a></li>
+                <li><a href="#schedules">مواعيد المحاضرات</a></li>
+                <li><a href="#results">عرض نتيجة الطالب</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <nav>
-        <ul>
-            <li><a href="#section1">قسم 1</a></li>
-            <li><a href="#section2">قسم 2</a></li>
-            <li><a href="#section3">قسم 3</a></li>
-            <li><a href="#contact">اتصل بي</a></li>
-        </ul>
-    </nav>
-
     <main>
-        <section id="section1">
-            <h2>عنوان القسم الأول</h2>
-            <p>محتوى القسم الأول هنا.</p>
-        </section>
+        <div class="section" id="about">
+            <h2>عن الجامعة</h2>
+            <div class="content">
+                <p>تأسست الجامعة في 2/08/2012.</p>
+                <h3>شعار الجامعة</h3>
+                <img src="icon.png" alt="شعار الجامعة" style="height: 100px;"> <!-- شعار الجامعة -->
+            </div>
+        </div>
 
-        <section id="section2">
-            <h2>عنوان القسم الثاني</h2>
-            <p>محتوى القسم الثاني هنا.</p>
-        </section>
+        <div class="section" id="slider">
+            <h2>شريط تمرير الصور</h2>
+            <div class="slider">
+                <img src="tape1.jpg" alt="صورة 1">
+                <img src="tape2.jpg" alt="صورة 2" class="hide">
+                <img src="tape3.jpg" alt="صورة 3" class="hide">
+                <img src="tape4.jpg" alt="صورة 4" class="hide">
+                <img src="tape5.jpg" alt="صورة 5" class="hide">
+                <img src="tape6.jpg" alt="صورة 6" class="hide">
+            </div>
+        </div>
 
-        <section id="section3">
-            <h2>عنوان القسم الثالث</h2>
-            <p>محتوى القسم الثالث هنا.</p>
-        </section>
+        <div class="section" id="news">
+            <h2>الأخبار العاجلة</h2>
+            <div class="content">
+                <p>خبر: الأحد إجازة رسمية بمناسبة الاحتفال بانتصار 6 أكتوبر. كل عام ومصر بخير وأمان.</p>
+            </div>
+        </div>
+
+        <div class="section" id="programs">
+            <h2>البرامج الأكاديمية</h2>
+            <div class="content">
+                <h3>الكليات المتاحة:</h3>
+                <ul>
+                    <li><strong>نظم المعلومات:</strong> برنامج يركز على تكنولوجيا المعلومات وإدارة البيانات.</li>
+                    <li><strong>محاسبة:</strong> برنامج يركز على المبادئ المحاسبية والتقارير المالية.</li>
+                    <li><strong>هندسة:</strong> برنامج يركز على تطبيقات الهندسة والتقنية.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section" id="admissions">
+            <h2>القبول والتسجيل</h2>
+            <div class="content">
+                <p>يمكن للطلاب الجدد التسجيل في الجامعة خلال فترة القبول، من خلال الموقع الإلكتروني.</p>
+            </div>
+        </div>
+
+        <div class="section" id="contact">
+            <h2>معلومات الاتصال</h2>
+            <div class="content">
+                <p>تواصل معنا عبر البريد الإلكتروني: <a href="mailto:info@university.com">info@university.com</a></p>
+            </div>
+        </div>
+
+        <div class="section" id="fees">
+            <h2>المصروفات</h2>
+            <div class="content">
+                <div class="fee-section">
+                    <h3>رسوم الدراسة:</h3>
+                    <p>رسوم الدراسة للطلاب الجدد: 10000 جنيه مصري سنوياً.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="doctors">
+            <h2>الدكاتره</h2>
+            <div class="content">
+                <div class="doctor">
+                    <h4>د. أحمد علي</h4>
+                    <p>أستاذ نظم المعلومات.</p>
+                </div>
+                <div class="doctor">
+                    <h4>د. ليلى مصطفى</h4>
+                    <p>أستاذة المحاسبة.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="schedules">
+            <h2>مواعيد المحاضرات</h2>
+            <div class="content">
+                <p>مواعيد المحاضرات متاحة على الموقع في قسم الجداول الدراسية.</p>
+            </div>
+        </div>
+
+        <div class="section" id="results">
+            <h2>عرض نتيجة الطالب</h2>
+            <form id="result-form">
+                <input type="text" id="student-id" class="form-control" placeholder="رقم الطالب" required>
+                <input type="password" id="password" class="form-control" placeholder="كلمة المرور" required>
+                <button type="submit" class="btn">عرض النتيجة</button>
+            </form>
+        </div>
     </main>
 
     <footer>
-        <p>تصميم إبراهيم مصطفى</p>
-        <a href="https://ibrahimmustafacv.github.io/my-social-media-page/" class="button">موقعى الشخصى</a>
+        <p>&copy; 2024 جامعة المستقبل - جميع الحقوق محفوظة.</p>
     </footer>
 </body>
 </html>
