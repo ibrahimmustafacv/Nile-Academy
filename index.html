@@ -3,313 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الموقع الجامعي</title>
+    <title>جامعة المستقبل</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
-
         header {
-            background: #003366; /* اللون الأزرق */
-            color: #fff;
+            background: #007BFF;
+            color: white;
             padding: 20px;
             text-align: center;
+        }
+        .slider {
             position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
         }
-
-        header .logo {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.3s;
-        }
-
-        nav ul li a:hover {
-            background: #00509E;
-        }
-
-        main {
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* تكرار الأعمدة بشكل تفاعلي */
-            gap: 20px; /* المسافة بين القوالب */
-        }
-
-        .section {
-            background: white;
-            border-radius: 15px; /* زوايا دائرية */
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-            cursor: pointer; /* تجعل القالب قابل للنقر */
-            overflow: hidden; /* لإخفاء أي محتوى زائد */
-        }
-
-        .section:hover {
-            transform: scale(1.05); /* تأثير تفاعلي عند التمرير */
-        }
-
-        .section h2 {
-            cursor: pointer; /* يجعل العنوان قابل للنقر */
-            margin: 0;
-        }
-
-        .content {
-            display: none; /* إخفاء المحتوى بشكل افتراضي */
-            padding: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px 0;
-            background: #003366; /* اللون الأزرق */
-            color: white;
-            position: relative;
-            bottom: 0;
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
             width: 100%;
         }
-
-        .fee-section, .doctor {
-            margin-bottom: 15px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background: #f9f9f9;
+        .slide {
+            min-width: 100%;
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
         }
-
-        .form-control {
+        .section {
+            padding: 20px;
+        }
+        .content, .fee-section, .doctor {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin: 10px 0;
+        }
+        footer {
+            text-align: center;
             padding: 10px;
-            width: calc(100% - 22px);
+            background: #007BFF;
+            color: white;
+        }
+        .btn {
+            background: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .form-control {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
-        .btn {
-            background: #003366;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-
-        .btn:hover {
-            background: #00509E;
-        }
-
-        /* شريط التمرير */
-        .slider {
-            display: flex;
-            overflow-x: auto;
-            gap: 10px;
-        }
-
-        .slider img {
-            height: 200px; /* ارتفاع الصور في الشريط */
-            border-radius: 10px; /* زوايا دائرية للصور */
-        }
     </style>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            // إضافة حدث للنقر على عناوين الأقسام
-            const headers = document.querySelectorAll(".section h2");
-            headers.forEach(header => {
-                header.addEventListener("click", function() {
-                    const content = this.nextElementSibling;
-                    content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
-                });
-            });
-
-            document.getElementById("result-form").addEventListener("submit", function(e) {
-                e.preventDefault();
-                const studentId = document.getElementById("student-id").value;
-                const password = document.getElementById("password").value;
-
-                // هنا يمكنك إضافة الكود الخاص بالتحقق من النتيجة.
-                alert("عرض نتيجة الطالب: " + studentId);
-            });
-        });
-    </script>
 </head>
 <body>
-    <header>
-        <div class="logo">🎓 جامعة المستقبل</div> <!-- مكان الشعار -->
-        <h1>معلومات عن الجامعة</h1>
-        <nav>
+
+<header>
+    <h1>مرحبًا بكم في جامعة المستقبل</h1>
+</header>
+
+<div class="slider">
+    <div class="slides">
+        <div class="slide" style="background-image: url('image1.jpg');"></div>
+        <div class="slide" style="background-image: url('image2.jpg');"></div>
+        <div class="slide" style="background-image: url('image3.jpg');"></div>
+    </div>
+</div>
+
+<main>
+    <div class="section" id="about">
+        <h2>عن الجامعة</h2>
+        <div class="content">
+            <p>جامعة المستقبل تقدم مجموعة من البرامج الأكاديمية المعتمدة.</p>
+        </div>
+    </div>
+
+    <div class="section" id="contact">
+        <h2>معلومات الاتصال</h2>
+        <div class="content">
+            <p>تواصل معنا عبر البريد الإلكتروني: <a href="mailto:info@university.com">info@university.com</a></p>
+            <p>أو اتصل بنا على الرقم: 0123456789</p>
+        </div>
+    </div>
+
+    <div class="section" id="fees">
+        <h2>المصروفات</h2>
+        <div class="fee-section">
+            <p>البرامج الدراسية تختلف في المصروفات:</p>
             <ul>
-                <li><a href="#about">عن الجامعة</a></li>
-                <li><a href="#programs">البرامج الأكاديمية</a></li>
-                <li><a href="#admissions">القبول والتسجيل</a></li>
-                <li><a href="#news">الأخبار</a></li>
-                <li><a href="#services">الخدمات الطلابية</a></li>
-                <li><a href="#contact">معلومات الاتصال</a></li>
-                <li><a href="#fees">المصروفات</a></li>
-                <li><a href="#courses">الكورسات</a></li>
-                <li><a href="#doctors">الدكاتره</a></li>
-                <li><a href="#schedules">مواعيد المحاضرات</a></li>
-                <li><a href="#results">عرض نتيجة الطالب</a></li>
+                <li>نظم المعلومات: 1000 دولار سنوياً</li>
+                <li>محاسبة: 1200 دولار سنوياً</li>
+                <li>هندسة: 1500 دولار سنوياً</li>
             </ul>
-        </nav>
-    </header>
-
-    <main>
-        <div class="section" id="about">
-            <h2>عن الجامعة</h2>
-            <div class="content">
-                <p>تأسست الجامعة في 2/08/2012.</p>
-                <h3>شعار الجامعة</h3>
-                <img src="icon.png" alt="شعار الجامعة" style="height: 100px;"> <!-- شعار الجامعة -->
-            </div>
         </div>
+    </div>
 
-        <div class="section" id="slider">
-            <h2>شريط تمرير الصور</h2>
-            <div class="slider">
-                <img src="tape1.jpg" alt="صورة 1">
-                <img src="tape2.jpg" alt="صورة 2">
-                <img src="tape3.jpg" alt="صورة 3">
-                <img src="tape4.jpg" alt="صورة 4">
-                <img src="tape5.jpg" alt="صورة 5">
-                <img src="tape6.jpg" alt="صورة 6">
-            </div>
+    <div class="section" id="courses">
+        <h2>الكورسات</h2>
+        <div class="content">
+            <p>متاح لدينا مجموعة من الكورسات الصيفية:</p>
+            <ul>
+                <li>برمجة التطبيقات</li>
+                <li>تسويق الكتروني</li>
+                <li>تصميم جرافيك</li>
+            </ul>
         </div>
+    </div>
 
-        <div class="section" id="news">
-            <h2>الأخبار العاجلة</h2>
-            <div class="content">
-                <p>خبر: الأحد إجازة رسمية بمناسبة الاحتفال بانتصار 6 أكتوبر. كل عام ومصر بخير وأمان.</p>
-            </div>
+    <div class="section" id="doctors">
+        <h2>الدكاتره</h2>
+        <div class="doctor">
+            <p><strong>د. محمد علي:</strong> أستاذ في نظم المعلومات</p>
+            <p><strong>د. سارة حسني:</strong> أستاذة محاسبة</p>
+            <p><strong>د. أحمد زكي:</strong> أستاذ هندسة</p>
         </div>
+    </div>
 
-        <div class="section" id="programs">
-            <h2>البرامج الأكاديمية</h2>
-            <div class="content">
-                <h3>الكليات المتاحة:</h3>
-                <ul>
-                    <li><strong>نظم المعلومات:</strong> برنامج يركز على تكنولوجيا المعلومات وإدارة البيانات.</li>
-                    <li><strong>محاسبة:</strong> برنامج يركز على المبادئ المحاسبية والتقارير المالية.</li>
-                    <li><strong>هندسة:</strong> برنامج يركز على تطبيقات الهندسة والتقنية.</li>
-                </ul>
-                <h3>برامج دراسات عليا:</h3>
-                <p>الشهادة الحاصلة هي البكالريوس.</p>
-            </div>
+    <div class="section" id="schedules">
+        <h2>مواعيد المحاضرات</h2>
+        <div class="content">
+            <h3>الجدول الدراسي:</h3>
+            <ul>
+                <li>الأحد: محاضرات نظم المعلومات من 9 صباحاً إلى 12 ظهراً.</li>
+                <li>الإثنين: محاضرات المحاسبة من 1 ظهراً إلى 4 مساءً.</li>
+                <li>الثلاثاء: محاضرات الهندسة من 9 صباحاً إلى 12 ظهراً.</li>
+            </ul>
         </div>
+    </div>
 
-        <div class="section" id="campus">
-            <h2>معلومات عن الحرم الجامعي</h2>
-            <div class="content">
-                <h3>الخرائط والمرافق:</h3>
-                <img src="map.jpg" alt="خريطة الحرم الجامعي" style="width: 100%; border-radius: 10px;">
-            </div>
-        </div>
+    <div class="section" id="results">
+        <h2>عرض نتيجة الطالب</h2>
+        <form id="result-form">
+            <input type="text" id="student-id" class="form-control" placeholder="رقم الطالب" required>
+            <input type="password" id="password" class="form-control" placeholder="كلمة المرور" required>
+            <button type="submit" class="btn">عرض النتيجة</button>
+        </form>
+    </div>
+</main>
 
-        <div class="section" id="admissions">
-            <h2>القبول والتسجيل</h2>
-            <div class="content">
-                <p>الأوراق المطلوبة للتقديم:</p>
-                <ul>
-                    <li>أصل شهادة الثانوية العامة</li>
-                    <li>صورة بطاقة الطالب وولي الأمر</li>
-                    <li>أصل شهادة الميلاد</li>
-                    <li>بطاقة الترشيح</li>
-                    <li>6 صور شخصية للطلاب الذكور</li>
-                    <li>نموذج 2 جند و18 جند</li>
-                </ul>
-                <h3>مواعيد هامة:</h3>
-                <p>مواعيد تقديم الطلبات والمقابلات: من 1 إلى 30 سبتمبر.</p>
-            </div>
-        </div>
+<footer>
+    <p>&copy; 2024 جامعة المستقبل. جميع الحقوق محفوظة.</p>
+</footer>
 
-        <div class="section" id="contact">
-            <h2>معلومات الاتصال</h2>
-            <div class="content">
-                <p>تواصل معنا عبر البريد الإلكتروني: <a href="mailto:info@university.com">info@university.com</a></p>
-                <p>أو اتصل بنا على الرقم: 0123456789</p>
-            </div>
-        </div>
+<script>
+    let index = 0;
+    const slides = document.querySelector('.slides');
+    const slideCount = document.querySelectorAll('.slide').length;
 
-        <div class="section" id="fees">
-            <h2>المصروفات</h2>
-            <div class="fee-section">
-                <p>البرامج الدراسية تختلف في المصروفات:</p>
-                <ul>
-                    <li>نظم المعلومات: 1000 دولار سنوياً</li>
-                    <li>محاسبة: 1200 دولار سنوياً</li>
-                    <li>هندسة: 1500 دولار سنوياً</li>
-                </ul>
-            </div>
-        </div>
+    function showNextSlide() {
+        index = (index + 1) % slideCount;
+        slides.style.transform = 'translateX(' + (-index * 100) + '%)';
+    }
 
-        <div class="section" id="courses">
-            <h2>الكورسات</h2>
-            <div class="content">
-                <p>متاح لدينا مجموعة من الكورسات الصيفية:</p>
-                <ul>
-                    <li>برمجة التطبيقات</li>
-                    <li>تسويق الكتروني</li>
-                    <li>تصميم جرافيك</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section" id="doctors">
-            <h2>الدكاتره</h2>
-            <div class="doctor">
-                <p><strong>د. محمد علي:</strong> أستاذ في نظم المعلومات</p>
-                <p><strong>د. سارة حسني:</strong> أستاذة محاسبة</p>
-                <p><strong>د. أحمد زكي:</strong> أستاذ هندسة</p>
-            </div>
-        </div>
-
-        <div class="section" id="schedules">
-            <h2>مواعيد المحاضرات</h2>
-            <div class="content">
-                <h3>الجدول الدراسي:</h3>
-                <ul>
-                    <li>الأحد: محاضرات نظم المعلومات من 9 صباحاً إلى 12 ظهراً.</li>
-                    <li>الإثنين: محاضرات المحاسبة من 1 ظهراً إلى 4 مساءً.</li>
-                    <li>الثلاثاء: محاضرات الهندسة من 9 صباحاً إلى 12 ظهراً.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section" id="results">
-            <h2>عرض نتيجة الطالب</h2>
-            <form id="result-form">
-                <input type="text" id="student-id" class="form-control" placeholder="رقم الطالب" required>
-                <input type="password" id="password" class="form-control" placeholder="كلمة المرور" required>
-                <button type="submit" class="btn">عرض النتيجة</button>
-            </form>
-        </div>
-    </main>
-
-    <footer>
-        <p>&copy; 2024 جامعة المستقبل. جميع الحقوق محفوظة.</p>
-    </footer>
+    setInterval(showNextSlide, 5000); // تغيير الصورة كل 5 ثواني
+</script>
 </body>
 </html>
