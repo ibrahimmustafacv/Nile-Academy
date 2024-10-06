@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جامعة المستقبل</title>
+    <title>الموقع الجامعي</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
@@ -14,14 +14,16 @@
         }
 
         header {
-            background-color: #003366;
-            color: white;
-            padding: 10px 0;
+            background: #003366; /* اللون الأزرق */
+            color: #fff;
+            padding: 20px;
             text-align: center;
+            position: relative;
         }
 
-        header .logo h1 {
-            margin: 0;
+        header .logo {
+            font-size: 36px;
+            margin-bottom: 10px;
         }
 
         nav ul {
@@ -34,58 +36,118 @@
             margin: 0 15px;
         }
 
-        nav a {
+        nav ul li a {
             color: white;
             text-decoration: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        nav ul li a:hover {
+            background: #00509E;
         }
 
         main {
             padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* تكرار الأعمدة بشكل تفاعلي */
+            gap: 20px; /* المسافة بين القوالب */
         }
 
         .section {
-            background-color: white;
-            border-radius: 10px;
-            margin: 20px 0;
-            padding: 15px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background: white;
+            border-radius: 15px; /* زوايا دائرية */
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            cursor: pointer; /* تجعل القالب قابل للنقر */
+            overflow: hidden; /* لإخفاء أي محتوى زائد */
+        }
+
+        .section:hover {
+            transform: scale(1.05); /* تأثير تفاعلي عند التمرير */
+        }
+
+        .section h2 {
+            cursor: pointer; /* يجعل العنوان قابل للنقر */
+            margin: 0;
         }
 
         .content {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .program, .doctor {
-            background-color: #e7f1ff;
-            border-radius: 10px;
+            display: none; /* إخفاء المحتوى بشكل افتراضي */
             padding: 10px;
-            transition: transform 0.3s;
-        }
-
-        .program:hover, .doctor:hover {
-            transform: scale(1.05);
         }
 
         footer {
             text-align: center;
-            padding: 20px 0;
-            background-color: #003366;
+            padding: 15px 0;
+            background: #003366; /* اللون الأزرق */
             color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
         }
 
-        .social-media img {
-            width: 30px;
-            margin: 0 10px;
+        .fee-section, .doctor {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+
+        .form-control {
+            margin: 10px 0;
+            padding: 10px;
+            width: calc(100% - 22px);
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .btn {
+            background: #003366;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #00509E;
         }
     </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // إضافة حدث للنقر على عناوين الأقسام
+            const headers = document.querySelectorAll(".section h2");
+            headers.forEach(header => {
+                header.addEventListener("click", function() {
+                    const content = this.nextElementSibling;
+                    content.style.display = content.style.display === "none" || content.style.display === "" ? "block" : "none";
+                });
+            });
+
+            document.getElementById("result-form").addEventListener("submit", function(e) {
+                e.preventDefault();
+                const studentId = document.getElementById("student-id").value;
+                const password = document.getElementById("password").value;
+
+                // هنا يمكنك إضافة الكود الخاص بالتحقق من النتيجة.
+                alert("عرض نتيجة الطالب: " + studentId);
+            });
+        });
+    </script>
 </head>
 <body>
     <header>
-        <div class="logo">
-            <h1>جامعة المستقبل</h1>
-        </div>
+        <div class="logo">🎓 جامعة المستقبل</div> <!-- مكان الشعار -->
+        <h1>معلومات عن الجامعة</h1>
         <nav>
             <ul>
                 <li><a href="#about">عن الجامعة</a></li>
@@ -94,6 +156,11 @@
                 <li><a href="#news">الأخبار والفعاليات</a></li>
                 <li><a href="#services">الخدمات الطلابية</a></li>
                 <li><a href="#contact">معلومات الاتصال</a></li>
+                <li><a href="#fees">المصروفات</a></li>
+                <li><a href="#courses">الكورسات</a></li>
+                <li><a href="#doctors">الدكاتره</a></li>
+                <li><a href="#schedules">مواعيد المحاضرات</a></li>
+                <li><a href="#results">عرض نتيجة الطالب</a></li>
             </ul>
         </nav>
     </header>
@@ -101,66 +168,86 @@
     <main>
         <div class="section" id="about">
             <h2>عن الجامعة</h2>
-            <p>تأسست جامعة المستقبل في 2/08/2012 وتهدف إلى تقديم تعليم عالي الجودة.</p>
+            <div class="content">
+                <p>تأسست الجامعة في 2/08/2012.</p>
+            </div>
         </div>
 
         <div class="section" id="programs">
             <h2>البرامج الأكاديمية</h2>
             <div class="content">
-                <div class="program">
-                    <h4>كلية نظم المعلومات</h4>
-                    <p>تخصصات: نظم المعلومات</p>
-                </div>
-                <div class="program">
-                    <h4>كلية المحاسبة</h4>
-                    <p>تخصصات: محاسبة</p>
-                </div>
-                <div class="program">
-                    <h4>كلية الهندسة</h4>
-                    <p>تخصصات: هندسة</p>
-                </div>
+                <ul>
+                    <li>نظم المعلومات</li>
+                    <li>محاسبة</li>
+                    <li>هندسة</li>
+                </ul>
             </div>
         </div>
 
         <div class="section" id="admissions">
             <h2>القبول والتسجيل</h2>
-            <h3>الأوراق المطلوبة للتقديم:</h3>
-            <ul>
-                <li>أصل شهادة الثانوية العامة</li>
-                <li>صورة بطاقة الطالب وولي الأمر</li>
-                <li>أصل شهادة الميلاد</li>
-                <li>بطاقة الترشيح</li>
-                <li>6 صور شخصية بالنسبة للطلاب الذكور</li>
-                <li>نموذج 2 جند (لطلاب الذكور)</li>
-                <li>نموذج 18 جند (لطلاب الذكور)</li>
-            </ul>
+            <div class="content">
+                <p>الأوراق المطلوبة للتقديم:</p>
+                <ul>
+                    <li>أصل شهادة الثانوية العامة</li>
+                    <li>صورة بطاقة الطالب وولي الأمر</li>
+                    <li>أصل شهادة الميلاد</li>
+                    <li>بطاقة الترشيح</li>
+                    <li>6 صور شخصية للطلاب الذكور</li>
+                    <li>نموذج 2 جند و18 جند</li>
+                </ul>
+            </div>
         </div>
 
         <div class="section" id="news">
             <h2>الأخبار والفعاليات</h2>
-            <p>اهتمام جريدة الجمهورية وجريدة أخبار اليوم بخبر تكريم وزير التعليم العالي لمعهد النيل العالي للهندسة والتكنولوجيا بالمنصورة لحصول المعهد على الاعتماد من مؤسسة ABET الأمريكية.</p>
+            <div class="content">
+                <p>اهتمام جريدة الجمهورية وجريدة أخبار اليوم وكذلك الصحف الإلكترونية بخبر تكريم وزير التعليم العالي لـ معهد النيل العالي للهندسة والتكنولوجيا بالمنصورة لحصول المعهد على الاعتماد من مؤسسة ABET الأمريكية.</p>
+            </div>
         </div>
 
         <div class="section" id="services">
             <h2>الخدمات الطلابية</h2>
-            <ul>
-                <li>مكتبة</li>
-                <li>دعم أكاديمي</li>
-            </ul>
+            <div class="content">
+                <p>مكتبة، دعم أكاديمي، وغير ذلك.</p>
+            </div>
         </div>
 
         <div class="section" id="contact">
             <h2>معلومات الاتصال</h2>
-            <p>الهاتف: <a href="tel:01557569329">015 57569329</a></p>
+            <div class="content">
+                <p>الهاتف: 015 57569329</p>
+            </div>
+        </div>
+
+        <div class="section" id="fees">
+            <h2>المصروفات</h2>
+            <div class="content">
+                <p>تتضمن المصروفات الخاصة بكل قسم:</p>
+                <div class="fee-section">
+                    <h3>نظم المعلومات</h3>
+                    <p>المصروفات: 1000 جنيه (4 فرق)</p>
+                </div>
+                <div class="fee-section">
+                    <h3>محاسبة</h3>
+                    <p>المصروفات: 1200 جنيه (4 فرق)</p>
+                </div>
+                <div class="fee-section">
+                    <h3>هندسة</h3>
+                    <p>المصروفات: 1500 جنيه (6 فرق)</p>
+                </div>
+            </div>
         </div>
 
         <div class="section" id="courses">
             <h2>الكورسات</h2>
-            <ul>
-                <li>ICDL</li>
-                <li>اللغة الإنجليزية</li>
-                <li>CS50</li>
-            </ul>
+            <div class="content">
+                <ul>
+                    <li>ICDL</li>
+                    <li>إنجليزي</li>
+                    <li>CS50</li>
+                </ul>
+            </div>
         </div>
 
         <div class="section" id="doctors">
@@ -169,12 +256,10 @@
                 <div class="doctor">
                     <h4>الدكتور محمد علي</h4>
                     <p>تخصص: نظم معلومات</p>
-                    <p>رقم الهاتف: 01234567890</p>
                 </div>
                 <div class="doctor">
                     <h4>الدكتور أحمد محمود</h4>
                     <p>تخصص: محاسبة</p>
-                    <p>رقم الهاتف: 01234567891</p>
                 </div>
             </div>
         </div>
@@ -198,29 +283,6 @@
 
     <footer>
         <p>&copy; 2024 جامعة المستقبل. جميع الحقوق محفوظة.</p>
-        <div class="social-media">
-            <a href="#"><img src="facebook-icon.png" alt="فيسبوك"></a>
-            <a href="#"><img src="twitter-icon.png" alt="تويتر"></a>
-            <a href="#"><img src="instagram-icon.png" alt="إنستجرام"></a>
-        </div>
     </footer>
-
-    <script>
-        document.querySelectorAll('.section h2').forEach(header => {
-            header.addEventListener('click', () => {
-                const content = header.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-            });
-        });
-
-        // Display all sections initially hidden
-        document.querySelectorAll('.section .content').forEach(content => {
-            content.style.display = "none";
-        });
-    </script>
 </body>
 </html>
