@@ -122,6 +122,20 @@
         .btn:hover {
             background: #00509E;
         }
+
+        .link-button {
+            display: inline-block;
+            background-color: #28a745; /* لون الزر */
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .link-button:hover {
+            background-color: #218838; /* لون الزر عند التمرير */
+        }
     </style>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -236,22 +250,25 @@
         <div class="section" id="schedules">
             <h2>مواعيد المحاضرات</h2>
             <div class="content">
-                <p>مواعيد المحاضرات متاحة على الموقع في قسم الجداول الدراسية.</p>
+                <p>تبدأ المحاضرات من يوم الأحد إلى الخميس، بدءًا من الساعة 8 صباحًا.</p>
             </div>
         </div>
 
         <div class="section" id="results">
             <h2>عرض نتيجة الطالب</h2>
-            <form id="result-form">
-                <input type="text" id="student-id" class="form-control" placeholder="رقم الطالب" required>
-                <input type="password" id="password" class="form-control" placeholder="كلمة المرور" required>
-                <button type="submit" class="btn">عرض النتيجة</button>
-            </form>
+            <div class="content">
+                <form id="result-form">
+                    <input type="text" id="student-id" class="form-control" placeholder="رقم الطالب" required>
+                    <input type="password" id="password" class="form-control" placeholder="كلمة المرور" required>
+                    <button type="submit" class="btn">عرض النتيجة</button>
+                </form>
+            </div>
         </div>
     </main>
 
     <footer>
-        <p>حقوق النشر © 2024 محفوظة لإبراهيم مصطفى إبراهيم. جميع الحقوق محفوظة. <a href="https://ibrahimmustafacv.github.io/my-social-media-page/" style="color: white; text-decoration: underline;">موقعي الشخصي</a></p>
+        <p>تصميم إبراهيم مصطفى</p>
+        <a href="https://ibrahimmustafacv.github.io/my-social-media-page/" class="link-button">موقعي الشخصي</a>
     </footer>
 </body>
 </html>
