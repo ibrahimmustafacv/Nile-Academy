@@ -125,13 +125,22 @@
         /* شريط التمرير */
         .slider {
             display: flex;
-            overflow-x: auto;
-            gap: 10px;
+            overflow: hidden; /* لإخفاء ما وراء عرض الشريط */
+            width: 100%;
+            height: 400px; /* زيادة ارتفاع الشريط */
+            position: relative; /* لجعل الصور متداخلة */
         }
 
         .slider img {
-            height: 200px; /* ارتفاع الصور في الشريط */
+            height: 100%; /* اجعل الصور تملأ الشريط */
+            width: auto; /* اجعل عرض الصور تلقائي */
             border-radius: 10px; /* زوايا دائرية للصور */
+            position: absolute; /* لجعلها تتداخل */
+            transition: opacity 1s ease; /* انتقال سلس */
+        }
+
+        .slider img.hide {
+            opacity: 0; /* إخفاء الصورة */
         }
     </style>
     <script>
@@ -153,6 +162,18 @@
                 // هنا يمكنك إضافة الكود الخاص بالتحقق من النتيجة.
                 alert("عرض نتيجة الطالب: " + studentId);
             });
+
+            // شريط التمرير التلقائي
+            const images = document.querySelectorAll('.slider img');
+            let currentIndex = 0;
+
+            function showNextImage() {
+                images[currentIndex].classList.add('hide');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.remove('hide');
+            }
+
+            setInterval(showNextImage, 3000); // تغيير الصورة كل 3 ثواني
         });
     </script>
 </head>
@@ -191,11 +212,11 @@
             <h2>شريط تمرير الصور</h2>
             <div class="slider">
                 <img src="tape1.jpg" alt="صورة 1">
-                <img src="tape2.jpg" alt="صورة 2">
-                <img src="tape3.jpg" alt="صورة 3">
-                <img src="tape4.jpg" alt="صورة 4">
-                <img src="tape5.jpg" alt="صورة 5">
-                <img src="tape6.jpg" alt="صورة 6">
+                <img src="tape2.jpg" alt="صورة 2" class="hide">
+                <img src="tape3.jpg" alt="صورة 3" class="hide">
+                <img src="tape4.jpg" alt="صورة 4" class="hide">
+                <img src="tape5.jpg" alt="صورة 5" class="hide">
+                <img src="tape6.jpg" alt="صورة 6" class="hide">
             </div>
         </div>
 
@@ -215,33 +236,13 @@
                     <li><strong>محاسبة:</strong> برنامج يركز على المبادئ المحاسبية والتقارير المالية.</li>
                     <li><strong>هندسة:</strong> برنامج يركز على تطبيقات الهندسة والتقنية.</li>
                 </ul>
-                <h3>برامج دراسات عليا:</h3>
-                <p>الشهادة الحاصلة هي البكالريوس.</p>
-            </div>
-        </div>
-
-        <div class="section" id="campus">
-            <h2>معلومات عن الحرم الجامعي</h2>
-            <div class="content">
-                <h3>الخرائط والمرافق:</h3>
-                <img src="map.jpg" alt="خريطة الحرم الجامعي" style="width: 100%; border-radius: 10px;">
             </div>
         </div>
 
         <div class="section" id="admissions">
             <h2>القبول والتسجيل</h2>
             <div class="content">
-                <p>الأوراق المطلوبة للتقديم:</p>
-                <ul>
-                    <li>أصل شهادة الثانوية العامة</li>
-                    <li>صورة بطاقة الطالب وولي الأمر</li>
-                    <li>أصل شهادة الميلاد</li>
-                    <li>بطاقة الترشيح</li>
-                    <li>6 صور شخصية للطلاب الذكور</li>
-                    <li>نموذج 2 جند و18 جند</li>
-                </ul>
-                <h3>مواعيد هامة:</h3>
-                <p>مواعيد تقديم الطلبات والمقابلات: من 1 إلى 30 سبتمبر.</p>
+                <p>يمكن للطلاب الجدد التسجيل في الجامعة خلال فترة القبول، من خلال الموقع الإلكتروني.</p>
             </div>
         </div>
 
@@ -249,52 +250,37 @@
             <h2>معلومات الاتصال</h2>
             <div class="content">
                 <p>تواصل معنا عبر البريد الإلكتروني: <a href="mailto:info@university.com">info@university.com</a></p>
-                <p>أو اتصل بنا على الرقم: 0123456789</p>
             </div>
         </div>
 
         <div class="section" id="fees">
             <h2>المصروفات</h2>
-            <div class="fee-section">
-                <p>البرامج الدراسية تختلف في المصروفات:</p>
-                <ul>
-                    <li>نظم المعلومات: 1000 دولار سنوياً</li>
-                    <li>محاسبة: 1200 دولار سنوياً</li>
-                    <li>هندسة: 1500 دولار سنوياً</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="section" id="courses">
-            <h2>الكورسات</h2>
             <div class="content">
-                <p>متاح لدينا مجموعة من الكورسات الصيفية:</p>
-                <ul>
-                    <li>برمجة التطبيقات</li>
-                    <li>تسويق الكتروني</li>
-                    <li>تصميم جرافيك</li>
-                </ul>
+                <div class="fee-section">
+                    <h3>رسوم الدراسة:</h3>
+                    <p>رسوم الدراسة للطلاب الجدد: 10000 جنيه مصري سنوياً.</p>
+                </div>
             </div>
         </div>
 
         <div class="section" id="doctors">
             <h2>الدكاتره</h2>
-            <div class="doctor">
-                <p><strong>د. محمد علي:</strong> أستاذ في نظم المعلومات</p>
-                <p><strong>د. سارة حسني:</strong> أستاذة محاسبة</p>
-                <p><strong>د. أحمد زكي:</strong> أستاذ هندسة</p>
+            <div class="content">
+                <div class="doctor">
+                    <h4>د. أحمد علي</h4>
+                    <p>أستاذ نظم المعلومات.</p>
+                </div>
+                <div class="doctor">
+                    <h4>د. ليلى مصطفى</h4>
+                    <p>أستاذة المحاسبة.</p>
+                </div>
             </div>
         </div>
 
         <div class="section" id="schedules">
             <h2>مواعيد المحاضرات</h2>
             <div class="content">
-                <h3>الجدول الدراسي:</h3>
-                <ul>
-                    <li>الأحد: محاضرات نظم المعلومات من 9 صباحاً إلى 12 ظهراً.</li>
-                    <li>الإثنين: محاضرات المحاسبة من 1 ظهراً إلى 4 مساءً.</li>
-                    <li>الثلاثاء: محاضرات الهندسة من 9 صباحاً إلى 12 ظهراً.</li>
-                </ul>
+                <p>مواعيد المحاضرات متاحة على الموقع في قسم الجداول الدراسية.</p>
             </div>
         </div>
 
@@ -309,7 +295,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2024 جامعة المستقبل. جميع الحقوق محفوظة.</p>
+        <p>&copy; 2024 جامعة المستقبل - جميع الحقوق محفوظة.</p>
     </footer>
 </body>
 </html>
